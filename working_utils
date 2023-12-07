@@ -1,0 +1,14 @@
+def get_field_content():
+    doc = pdf.open('Knapp.pdf')
+    page = doc[0]
+    text = page.get_text("text")
+
+    lines = text.splitlines()
+    for i, line in enumerate(lines):
+        if line.startswith('3a. Client\'s First Name'):  # Adjust this to match your document
+            field_value = lines[i + 1] if i + 1 < len(lines) else None
+            print(field_value)
+            break
+    else:
+        print('No matching field name found in the document.')
+
